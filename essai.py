@@ -1,6 +1,7 @@
 import pygame as pg
 import moderngl as mgl
 import sys
+from model import Triangle
 
 class GraphicsEngine:
     def __init__(self, win_size=(800, 450)):
@@ -16,17 +17,21 @@ class GraphicsEngine:
         pg.display.set_mode(self.WIN_SIZE, flags=pg.OPENGL | pg.DOUBLEBUF)
         # mouse settings
         pg.event.set_grab(True)
-        pg.mouse.set_visible(False)
+        # pg.mouse.set_visible(False)
         # detect and use existing opengl context
         self.ctx = mgl.create_context()
         self.clock = pg.time.Clock()
         self.time = 0
         self.delta_time = 0
 
+        #scene
+        self.scene = Triangle(self)
+
     def check_events(self):
         for event in pg.event.get():
             if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
                 # self.mesh.destroy()
+                self.scene.destroy()
                 pg.quit()
                 sys.exit()
 
@@ -34,7 +39,7 @@ class GraphicsEngine:
         # clear framebuffer
         self.ctx.clear(color=(0.08, 0.16, 0.18))
         # render scene
-        # self.scene.render()
+        self.scene.render()
         # swap buffers
         pg.display.flip()
 
