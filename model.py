@@ -12,6 +12,7 @@ class Triangle:
         self.shader_prgm['m_proj'].write(self.app.camera.m_proj)
 
     def update(self):
+
         self.shader_prgm['m_view'].write(self.app.camera.m_view)
 
     def render(self):
@@ -59,10 +60,10 @@ class Cube(Triangle):
             vertex_data = [S1,S2,S3,
                            S1,S3,S4,
                            S4,S3,S7,
-                           S4,S7,S6,
-                           S1,S2,S8,
-                           S1,S8,S5,
-                           S5,S7,S6,
-                           S5,S8,S7]
+                           S4,S7,S8,
+                           S1,S6,S2,
+                           S1,S5,S6,
+                           S5,S8,S7,
+                           S5,S7,S6]
             self.vertex_data = np.array(vertex_data, dtype= 'f4')
         super().__init__(app,self.vertex_data)
