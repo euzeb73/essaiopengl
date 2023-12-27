@@ -21,8 +21,9 @@ class GraphicsEngine:
         pg.mouse.set_visible(False)
         # detect and use existing opengl context
         self.ctx = mgl.create_context()
-        self.ctx.enable(flags=mgl.DEPTH_TEST | mgl.CULL_FACE)
-        self.ctx.front_face = 'cw'
+        # self.ctx.enable(flags=mgl.DEPTH_TEST | mgl.CULL_FACE)
+        self.ctx.enable(flags=mgl.DEPTH_TEST)
+        # self.ctx.front_face = 'cw'
         self.clock = pg.time.Clock()
         self.time = 0
         self.delta_time = 0
