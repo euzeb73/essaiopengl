@@ -63,18 +63,18 @@ class Cube(Triangle):
         S6 = (0,0,0.5)
         S7 = (0.5,0,0.5)
         S8 = (0.5,0.5,0.5)
-        vertex_data = [S1,S2,S3]#,
-                        # S1,S3,S4,
-                        # S4,S3,S7,
-                        # S4,S7,S8,
-                        # S1,S6,S2,
-                        # S1,S5,S6,
-                        # S5,S8,S7,
-                        # S5,S7,S6,
-                        # S2,S6,S7,
-                        # S2,S7,S3,
-                        # S3,S2,S6,
-                        # S3,S6,S7]
+        vertex_data = [S1,S2,S3,
+                        S1,S3,S4,
+                        S4,S3,S7,
+                        S4,S7,S8,
+                        S1,S6,S2,
+                        S1,S5,S6,
+                        S5,S8,S7,
+                        S5,S7,S6,
+                        S2,S6,S7,
+                        S2,S7,S3,
+                        S5,S1,S4,
+                        S5,S4,S8]
         return np.array(vertex_data, dtype= 'f4')
     
     def get_text_data(self):
@@ -83,17 +83,17 @@ class Cube(Triangle):
         S2 = (0,0) 
         S3 = (1,0)
         S4 = (1,1)
-        vertex_data = [S1,S2,S3]#,
-                    #    S1,S3,S4,
-                    #    S1,S2,S3,
-                    #    S1,S3,S4,
-                    #    S4,S2,S3,
-                    #    S4,S1,S2,
-                    #    S4,S2,S3,
-                    #    S4,S1,S2,
-                    #    S1,S2,S3,
-                    #    S1,S3,S4,
-                    #    S1,S2,S3,
-                    #    S1,S3,S4]
+        vertex_data = [S1,S2,S3,
+                       S1,S3,S4,
+                       S1,S2,S3,
+                       S1,S3,S4,
+                       S4,S2,S3,
+                       S4,S1,S2,
+                       S4,S1,S2,
+                       S4,S2,S3,
+                       S1,S2,S3,
+                       S1,S3,S4,
+                       S1,S2,S3,
+                       S1,S3,S4]
         vertex_data = np.array(vertex_data, dtype= 'f4')
         return vertex_data

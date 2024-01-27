@@ -2,7 +2,7 @@ import glm
 import pygame as pg
 FOV = 45
 NEAR = 0.1
-FAR = 1
+FAR = 100
 SENSITIVITY = 7e-3
 SPEED = 5e-3
 
