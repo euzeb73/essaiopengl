@@ -3,6 +3,7 @@ import moderngl as mgl
 import sys
 from model import Triangle, Cube
 from camera import Camera
+from scene import Scene
 
 class GraphicsEngine:
     def __init__(self, win_size=(800, 450)):
@@ -32,7 +33,12 @@ class GraphicsEngine:
         self.camera = Camera(self)
 
         #scene
-        self.scene = Cube(self)
+        self.scene = Scene()
+        for i in range(100):
+            cube = Cube(self)
+            cube.move([i,0,0])
+            cube.rotate(10*i)
+            self.scene.add_model(cube)
 
 
     def check_events(self):
@@ -50,6 +56,11 @@ class GraphicsEngine:
         self.scene.render()
         # swap buffers
         pg.display.flip()
+
+        # rotate a cube
+        self.scene.models[0].rotate(1)
+        self.scene.models[1].rotate(2,'tangage')
+        self.scene.models[2].rotate(5,'roulis')
 
     def get_time(self):
         self.time = pg.time.get_ticks() * 0.001
