@@ -34,11 +34,16 @@ class GraphicsEngine:
 
         #scene
         self.scene = Scene()
-        for i in range(100):
-            cube = Cube(self)
-            cube.move([i,0,0])
-            cube.rotate(10*i)
-            self.scene.add_model(cube)
+        for j in range(3):
+            for i in range(10):
+                for k in range(10):
+                    vect = [0,0,0]
+                    vect[j] = i
+                    vect[j-1] = k
+                    cube = Cube(self)
+                    cube.move(vect)
+                    cube.rotate(5*(i+k+j))
+                    self.scene.add_model(cube)
 
 
     def check_events(self):

@@ -1,5 +1,6 @@
 import numpy as np
 import glm
+import pygame as pg
 
 class Triangle:
     def __init__(self,app) -> None:
@@ -12,12 +13,20 @@ class Triangle:
         self.vao = self.get_vao()
         self.shader_prgm['m_proj'].write(self.app.camera.m_proj)
         self.matrix_move = glm.identity(glm.mat4)
-        self.inv_matrix_move = glm.identity(glm.mat4)
         self.x = glm.vec3([1.,0.,0.])
         self.y = glm.vec3([0.,1.,0.])
         self.z = glm.vec3([0.,0.,1.])
-        self.OC = glm.vec3([0.25,0.25,0.25]) #position du centre du cube
+        self.texture = self.get_texture(path='textures/img.png')
+        self.shader_prgm['u_texture_0'] = 0
+        self.texture.use()
 
+    def get_texture(self, path):
+        texture = pg.image.load(path).convert()
+        texture = pg.transform.flip(texture, flip_x= True, flip_y= True)
+        texture = self.ctx.texture(size = texture.get_size(), components = 3,
+                                   data = pg.image.tostring(texture, 'RGB'))        
+        return texture
+    
     def update(self):
         self.shader_prgm['m_view'].write(self.app.camera.m_view)
         self.shader_prgm['m_model'].write(self.matrix_move)
